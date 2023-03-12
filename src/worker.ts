@@ -7,7 +7,7 @@ async function run() {
     const worker = await Worker.create({
         workflowsPath: require.resolve('./workflows'),
         activities,
-        taskQueue: 'morning-routine',
+        taskQueue: 'tech-publishing',
     });
 
     // Next, start accepting tasks on the `morning-routine` queue
