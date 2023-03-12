@@ -1,0 +1,63 @@
+{
+  "name": "temporalversioncontrol",
+  "version": "1.0.0",
+  "description": "A project that demonstrate how to conduct version control on short running Temporal workflows",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reselbob/temporal-version-control-short.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reselbob/temporal-version-control-short/issues"
+  },
+  "homepage": "https://github.com/reselbob/temporal-version-control-short#readme",
+  "scripts": {
+    "build": "tsc --build",
+    "build.watch": "tsc --build --watch",
+    "lint": "eslint .",
+    "start": "ts-node src/worker.ts",
+    "start.watch": "nodemon src/worker.ts",
+    "workflow-from-client": "ts-node src/client.ts",
+    "test": "mocha --require ts-node/register tests/**/*.ts"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "ext": "ts",
+    "watch": [
+      "src"
+    ]
+  },
+  "dependencies": {
+    "@temporalio/activity": "^1.0.1",
+    "@temporalio/client": "^1.0.1",
+    "@temporalio/worker": "^1.0.1",
+    "@temporalio/workflow": "^1.0.1",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "nanoid": "3.x"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.4.0",
+    "@temporalio/testing": "^1.2.0",
+    "@tsconfig/node16": "^1.0.0",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "chai": "^4.3.6",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-deprecation": "^1.2.1",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2",
+    "uuid": "^9.0.0"
+  }
+}
