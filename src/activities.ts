@@ -1,4 +1,18 @@
 import {ApplicationFailure} from "@temporalio/workflow";
+import path from "path";
+import fs from "fs";
+
+export async function getArticle(): Promise<string>  {
+    const dataFileSpec = path.join(__dirname, '../data', 'data.json')
+    const data = fs.readFileSync(dataFileSpec,
+        {encoding:'utf8', flag:'r'});
+    const articles = JSON.parse(data);
+    const randomIndex = Math.floor(Math.random() * articles.length);
+    const randomEntry = articles[randomIndex];
+
+    return randomEntry;
+}
+
 
 export async function proofread(article:string): Promise<string> {
     const msg = `I am proofreading ${article}.`;

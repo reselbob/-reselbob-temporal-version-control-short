@@ -1,15 +1,13 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import path from "path";
-import fs from "fs";
-//import {proofread} from "./activities";
+
 
 
 const maximumAttempts = 10; //The number of times to retry
 
 // Get the activities function in order to make them to the workflow.
-const {proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
+const {getArticle, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
     startToCloseTimeout: '4 seconds',
     retry: {
@@ -20,7 +18,7 @@ const {proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof ac
 
 export async function techPublishingWorkflow(): Promise<void> {
     const startTime = new Date(Date.now()).toString();
-    const article = getArticle();
+    const article = await getArticle();
 
     const pr = await proofread(article);
 
@@ -32,7 +30,7 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const endTime = new Date(Date.now()).toString();
 
-    const person = {
+    const techPub = {
         startTime,
         proofread: pr,
         techEdit: te,
@@ -41,16 +39,7 @@ export async function techPublishingWorkflow(): Promise<void> {
         endTime
     }
 
-    console.log(JSON.stringify(person,null, 2));
+    console.log(JSON.stringify(techPub,null, 2));
 }
 
-function getArticle(): string{
-    const dataFileSpec = path.join(__dirname, '../data', 'data.json')
-    const data = fs.readFileSync(dataFileSpec,
-        {encoding:'utf8', flag:'r'});
-    const articles = JSON.parse(data);
-    const randomIndex = Math.floor(Math.random() * articles.length);
-    const randomEntry = articles[randomIndex];
 
-    return randomEntry;
-}
