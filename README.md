@@ -1,6 +1,16 @@
-# reselbob-temporal-version-control-short
+# temporal-version-control-short
 A project that demonstrates how to execute version control on short running Temporal Workflows
 
+The project emulates a technical publishing workflow that consists of the following activities
+
+- `getArticle()` //returns a string that is an article title
+- `proofread(article:string)`
+- `techEdit(article:string)`
+- `copyEdit(article:string)`
+
+The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
+
+The workflow will run every 10 minutes.
 
 # Running the demonstration code:
 
