@@ -7,6 +7,7 @@ The project emulates a technical publishing workflow that consists of the follow
 - `proofread(article:string)`
 - `techEdit(article:string)`
 - `copyEdit(article:string)`
+- `formatEdit(article:string)`
 
 The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
 
