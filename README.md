@@ -1,5 +1,5 @@
-# temporal-version-control-short
-A project that demonstrates how to execute version control on short running Temporal Workflows
+# temporal-version-control-01
+A project that demonstrates how to execute version control on potentially long-running Temporal Workflows
 
 The project emulates a technical publishing workflow that consists of the following activities
 
@@ -15,7 +15,9 @@ The workflow will run every 10 minutes.
 
 # Running the demonstration code:
 
-1. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
-2. Execute `npm install` to install the dependencies.
-3. Execute `npm start` to start the Worker.
-4. In another terminal window execute, `npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
+1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
+2. Execute `cd temporal-version-control`
+3. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
+4. Execute `npm install` to install the dependencies.
+5. Execute `npm start` to start the Worker.
+6. In another terminal window execute, `cd temporal-version-control && npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
