@@ -15,7 +15,7 @@ export async function getArticle(): Promise<string>  {
 
 
 export async function proofread(article:string): Promise<string> {
-    const msg = `I am proofreading ${article}.`;
+    const msg = `I am proofreading [${article}].`;
 
     const arr : string[] = [];
     arr.push(msg);
@@ -27,29 +27,29 @@ export async function proofread(article:string): Promise<string> {
 }
 
 export async function copyEdit(article:string): Promise<string> {
-    const msg = `I am copy editing ${article}.`;
+    const msg = `I am copy editing [${article}].`;
     console.log(msg);
     return msg;
 }
 
 export async function formatEdit(article:string): Promise<string> {
-    const msg = `I am format editing ${article}.`;
+    const msg = `I am format editing [${article}].`;
     console.log(msg);
     return msg;
 }
 
 export async function techEdit(article:string): Promise<string> {
-    const msg = `I am tech editing ${article}.`;
+    const msg = `I am tech editing [${article}].`;
     console.log(msg);
     return msg;
 }
 
 export async function checkSpelling(article:string): Promise<string> {
-    return `I am spell checking ${article}.`;
+    return `I am spell checking [${article}].`;
 }
 
 export async function checkGrammar(article:string): Promise<string> {
-    return `I am grammar checking ${article}.`;
+    return `I am grammar checking [${article}].`;
 }
 
 
