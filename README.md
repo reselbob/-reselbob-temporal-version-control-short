@@ -22,4 +22,7 @@ The workflow will run every 10 minutes.
 4. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
 5. Execute `npm install` to install the dependencies.
 6. Execute `npm start` to start the Worker.
-7. In another terminal window execute, `cd temporal-version-control && npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
+7. In another terminal window execute, `cd temporal-version-control`.
+8. Execute `npm run workflow-from-client <PUBLISHER_NAME>` to run the Workflow using the Temporal.io Client.
+
+**WHERE** `<PUBLISHER_NAME>` is an alphanumeric string that indicates the publisher's name.
