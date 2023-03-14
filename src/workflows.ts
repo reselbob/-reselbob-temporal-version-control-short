@@ -1,6 +1,7 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
+import {IConfig} from "./config";
 
 const maximumAttempts = 10; //The number of times to retry
 
@@ -14,19 +15,23 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBran
     }
 });
 
-export async function techPublishingWorkflow(): Promise<void> {
+export async function techPublishingWorkflow(publisher: string): Promise<void> {
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
+    let editor='';
 
-    const te = await techEdit(await getEditor(), article);
+    editor = await getEditor()
+    const te = await techEdit({editor, article, publisher});
 
-    const pr = await proofread(await getEditor(), article);
+    editor = await getEditor()
+    const pr = await proofread({editor, article, publisher});
 
-    const ce = await copyEdit(await getEditor(), article);
+    editor = await getEditor()
+    const ce = await copyEdit({editor, article, publisher});
 
-    const fe = await formatEdit(await getEditor(), article);
+    const fe = await formatEdit({editor, article, publisher});
 
-    const ba = await getBrandingApproval(article);
+    const ba = await getBrandingApproval({editor, article, publisher});
 
     if(!ba){
         console.log(`${article} did not get through branding`)
