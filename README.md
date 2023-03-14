@@ -4,10 +4,10 @@ A project that demonstrates how to execute version control on potentially long-r
 The project emulates a technical publishing workflow that consists of the following activities
 
 - `getArticle()` //returns a string that is an article title
-- `proofread(article:string)`
-- `techEdit(article:string)`
-- `copyEdit(article:string)`
-- `formatEdit(article:string)`
+- `proofread(editor:string, article:string)`
+- `techEdit(editor:string, article:string)`
+- `copyEdit(editor:string, article:string)`
+- `formatEdit(editor:string, article:string)`
 
 The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
 
@@ -17,7 +17,8 @@ The workflow will run every 10 minutes.
 
 1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
 2. Execute `cd temporal-version-control`
-3. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
-4. Execute `npm install` to install the dependencies.
-5. Execute `npm start` to start the Worker.
-6. In another terminal window execute, `cd temporal-version-control && npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
+3. Execute `git checkout V1`
+4. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
+5. Execute `npm install` to install the dependencies.
+6. Execute `npm start` to start the Worker.
+7. In another terminal window execute, `cd temporal-version-control && npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
