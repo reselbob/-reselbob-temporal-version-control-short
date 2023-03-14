@@ -28,6 +28,10 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const ba = await getBrandingApproval(article);
 
+    if(!ba){
+        console.log(`${article} did not get through branding`)
+    }
+
     const endTime = new Date(Date.now()).toString();
 
     const techPub = {
