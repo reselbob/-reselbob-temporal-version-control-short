@@ -1,14 +1,24 @@
 # temporal-version-control-01
 A project that demonstrates how to execute version control on potentially long-running Temporal Workflows
 
-The project emulates a technical publishing workflow that consists of the following activities
+The project emulates a technical publishing workflow that consists of the following activities:
 
 - `getArticle()` //returns a string that is an article title
-- `techEdit(editor:string, article:string)`
-- `proofread(editor:string, article:string)`
-- `copyEdit(editor:string, article:string)`
-- `formatEdit(editor:string, article:string)`
-- `getBrandingApproval(article:string)`
+- `techEdit(config : IConfig)`
+- `proofread(config : IConfig`
+- `copyEdit(config : IConfig)`
+- `formatEdit(config : IConfig)`
+- `getBrandingApproval(config : IConfig)`
+
+**WHERE** `IConfig` is:
+
+```typescript
+export interface IConfig {
+    publisher: string;
+    editor: string;
+    article: string;
+}
+```
 
 The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
 
