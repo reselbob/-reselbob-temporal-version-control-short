@@ -36,8 +36,8 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const techPub = {
         startTime,
-        proofread: pr,
         techEdit: te,
+        proofread: pr,
         copyEdit: ce,
         formatEdit: fe,
         brandingApproval: ba,
