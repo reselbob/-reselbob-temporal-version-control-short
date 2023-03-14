@@ -35,9 +35,10 @@ export async function proofread(editor: string, article:string): Promise<string>
 }
 
 export async function copyEdit(editor: string, article:string): Promise<string> {
-    const msg = `${editor} is copy editing: ${article}.`;
-    console.log(msg);
-    return msg;
+    const arr : string[] = [];
+    arr.push(`${editor} is copy editing: ${article}.`);
+    arr.push(await checkStyle(editor,article));
+    return JSON.stringify(arr, null, 2);
 }
 
 export async function getBrandingApproval(article:string): Promise<boolean> {
@@ -74,5 +75,8 @@ export async function checkGrammar(editor: string, article:string): Promise<stri
     return msg;
 }
 
-
+export async function checkStyle(editor: string, article:string): Promise<string> {
+    const msg = `${editor} is style checking: ${article}.`;
+    return msg;
+}
 
