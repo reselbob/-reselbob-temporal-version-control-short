@@ -26,7 +26,7 @@ export async function getEditor(): Promise<string>  {
 
 
 export async function proofread(editor: string, article:string): Promise<string> {
-    const msg = `I am proofreading [${article}].`;
+    const msg = `${editor} is proofreading: ${article}.`;
 
     const arr : string[] = [];
     arr.push(msg);
@@ -39,21 +39,21 @@ export async function proofread(editor: string, article:string): Promise<string>
 }
 
 export async function copyEdit(editor: string, article:string): Promise<string> {
-    const msg = `I am copy editing [${article}].`;
+    const msg = `${editor} is copy editing: ${article}.`;
     console.log(msg);
     await pause(PAUSE_LENGTH);
     return msg;
 }
 
 export async function formatEdit(editor: string, article:string): Promise<string> {
-    const msg = `I am format editing [${article}].`;
+    const msg = `${editor} is format editing: ${article}.`;
     console.log(msg);
     await pause(PAUSE_LENGTH);
     return msg;
 }
 
 export async function techEdit(editor: string, article:string): Promise<string> {
-    const msg = `I am tech editing [${article}].`;
+    const msg = `${editor} is tech editing: ${article}.`;
     console.log(msg);
     await pause(PAUSE_LENGTH);
     return msg;
@@ -61,14 +61,15 @@ export async function techEdit(editor: string, article:string): Promise<string> 
 
 export async function checkSpelling(editor: string, article:string): Promise<string> {
     await pause(PAUSE_LENGTH);
-    return `I am spell checking [${article}].`;
+    const msg = `${editor} is spell checking: ${article}.`;
+    return msg;
 }
 
 export async function checkGrammar(editor: string, article:string): Promise<string> {
     await pause(PAUSE_LENGTH);
-    return `I am grammar checking [${article}].`;
+    const msg = `${editor} is grammar checking: ${article}.`;
+    return msg;
 }
-
 
 async function pause(milliseconds: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
