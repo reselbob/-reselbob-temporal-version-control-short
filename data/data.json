@@ -1,11 +1,24 @@
-[
-  "How to Use Temporal",
-  "GoLang for Everybody",
-  "Learn TypeScript in 24 Hours",
-  "Version Control in Temporal",
-  "Best Practices for Workflow Management",
-  "10 Tips for Bash Scripting",
-  "Dynamic Unit Testing",
-  "Writing a Simple Smart Contract",
-  "Understanding EVM Bytecode"
-]
+{
+  "articles": [
+    "How to Use Temporal",
+    "GoLang for Everybody",
+    "Learn TypeScript in 24 Hours",
+    "Version Control in Temporal",
+    "Best Practices for Workflow Management",
+    "10 Tips for Bash Scripting",
+    "Dynamic Unit Testing",
+    "Writing a Simple Smart Contract",
+    "Understanding EVM Bytecode"
+  ],
+  "editors": [
+    "Bugs Bunny",
+    "Daffy Duck",
+    "Elmer Fudd",
+    "Fred Flintstone",
+    "Barney Rubble",
+    "Wilma Flintstone",
+    "Betty Rubble",
+    "George Jetson",
+    "Jane Jetson"
+  ]
+}
