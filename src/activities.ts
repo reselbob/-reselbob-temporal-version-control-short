@@ -34,9 +34,10 @@ export async function proofread(config : IConfig): Promise<string> {
 }
 
 export async function copyEdit(config : IConfig): Promise<string> {
-    const msg = `${config.editor} is copy editing: ${config.article} for publisher - ${config.publisher}.`;
-    console.log(msg);
-    return msg;
+    const arr : string[] = [];
+    arr.push(`${config.editor} is copy editing: ${config.article}.`);
+    arr.push(await checkStyle(config));
+    return JSON.stringify(arr, null, 2);
 }
 
 export async function getBrandingApproval(config : IConfig): Promise<boolean> {
@@ -73,5 +74,7 @@ export async function checkGrammar(config : IConfig): Promise<string> {
     return msg;
 }
 
-
-
+export async function checkStyle(config : IConfig): Promise<string> {
+    const msg = `${config.editor} is style checking: ${config.article}.`;
+    return msg;
+}
