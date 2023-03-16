@@ -17,7 +17,7 @@ The workflow will run every 10 minutes.
 
 1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
 2. Execute `cd temporal-version-control`
-3. Execute `git checkout V1`
+3. Execute `git checkout V1-error`
 4. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
 5. Execute `npm install` to install the dependencies.
 6. Execute `npm start` to start the Worker.
