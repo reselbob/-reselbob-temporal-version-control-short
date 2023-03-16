@@ -2,7 +2,6 @@ import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
 import {IConfig} from "./config";
-
 const maximumAttempts = 10; //The number of times to retry
 
 // Get the activities function in order to make them to the workflow.
@@ -20,17 +19,19 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     const article = await getArticle();
     let editor='';
 
-    editor = await getEditor()
+    editor = await getEditor();
     const te = await techEdit({editor, article, publisher});
 
-    editor = await getEditor()
+    editor = await getEditor();
     const pr = await proofread({editor, article, publisher});
 
-    editor = await getEditor()
+    editor = await getEditor();
     const ce = await copyEdit({editor, article, publisher});
 
+    editor = await getEditor();
     const fe = await formatEdit({editor, article, publisher});
 
+    editor = '';
     const ba = await getBrandingApproval({editor, article, publisher});
 
     if(!ba){
