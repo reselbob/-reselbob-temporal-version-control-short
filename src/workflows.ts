@@ -10,7 +10,7 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBran
     startToCloseTimeout: '4 seconds',
     retry: {
         backoffCoefficient: 1,
-        maximumAttempts,
+        maximumAttempts: 2,
     }
 });
 
