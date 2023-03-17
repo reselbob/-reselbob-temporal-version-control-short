@@ -10,7 +10,6 @@ async function run() {
         taskQueue: 'technical-publishing',
     });
 
-    // Next, start accepting tasks on the `morning-routine` queue
     await worker.run();
 }
 

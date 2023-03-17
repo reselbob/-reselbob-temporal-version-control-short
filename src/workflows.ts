@@ -1,8 +1,6 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import {IConfig} from "./config";
-const maximumAttempts = 10; //The number of times to retry
 
 // Get the activities function in order to make them to the workflow.
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBrandingApproval} = wf.proxyActivities<typeof activities>({
