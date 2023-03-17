@@ -1,4 +1,3 @@
-import {ApplicationFailure} from "@temporalio/workflow";
 import path from "path";
 import fs from "fs";
 
