@@ -42,26 +42,20 @@ export async function techPublishingWorkflow(): Promise<void> {
             endTime:  new Date(Date.now()).toString()
         }
     }else {
-        const te = await techEdit(await getEditor(), article);
-
         const pr = await proofread(await getEditor(), article);
+
+        const te = await techEdit(await getEditor(), article);
 
         const ce = await copyEdit(await getEditor(), article);
 
         const fe = await formatEdit(await getEditor(), article);
 
-        const ba = await getBrandingApproval(article);
-
-        if(!ba){
-            console.log(`${article} did not get through branding`)
-        }
         techPub = {
             startTime,
-            techEdit: te,
             proofread: pr,
+            techEdit: te,
             copyEdit: ce,
             formatEdit: fe,
-            brandingApproval: ba,
             endTime: new Date(Date.now()).toString()
         }
     }
