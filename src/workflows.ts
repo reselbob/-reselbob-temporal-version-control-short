@@ -2,10 +2,8 @@ import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
 
-const maximumAttempts = 10; //The number of times to retry
-
 // Get the activities function in order to make them to the workflow.
-const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBrandingApproval} = wf.proxyActivities<typeof activities>({
+const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
     startToCloseTimeout: '4 seconds',
     retry: {
@@ -26,11 +24,6 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const fe = await formatEdit(await getEditor(), article);
 
-    const ba = await getBrandingApproval(article);
-
-    if(!ba){
-        console.log(`${article} did not get through branding`)
-    }
 
     const endTime = new Date(Date.now()).toString();
 
@@ -40,7 +33,6 @@ export async function techPublishingWorkflow(): Promise<void> {
         proofread: pr,
         copyEdit: ce,
         formatEdit: fe,
-        brandingApproval: ba,
         endTime
     }
 

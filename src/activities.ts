@@ -41,17 +41,6 @@ export async function copyEdit(editor: string, article:string): Promise<string> 
     return JSON.stringify(arr, null, 2);
 }
 
-export async function getBrandingApproval(article:string): Promise<boolean> {
-    let b = true
-    let  msg = `${article} has been approved by the Branding Committee.`
-    if(article.includes('Understanding EVM Bytecode') || article.includes('10 Tips for Bash Scripting') ) b = false;
-
-    if(!b){
-        msg = `${article} has NOT been approved by the Branding Committee.`
-    }
-    console.log(msg);
-    return b;
-}
 
 export async function formatEdit(editor: string, article:string): Promise<string> {
     const msg = `${editor} is format editing: ${article}.`;
