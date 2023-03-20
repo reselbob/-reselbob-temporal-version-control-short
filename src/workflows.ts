@@ -16,36 +16,90 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
     let editor='';
+    let techPub = {};
+    if(wf.patched('V4')) {
+        editor = await getEditor();
+        const te = await techEdit({editor, article, publisher});
 
-    editor = await getEditor();
-    const te = await techEdit({editor, article, publisher});
+        editor = await getEditor();
+        const pr = await proofread({editor, article, publisher});
 
-    editor = await getEditor();
-    const pr = await proofread({editor, article, publisher});
+        editor = await getEditor();
+        const ce = await copyEdit({editor, article, publisher});
 
-    editor = await getEditor();
-    const ce = await copyEdit({editor, article, publisher});
+        editor = await getEditor();
+        const fe = await formatEdit({editor, article, publisher});
 
-    editor = await getEditor();
-    const fe = await formatEdit({editor, article, publisher});
+        editor = '';
+        const ba = await getBrandingApproval({editor, article, publisher});
 
-    editor = '';
-    const ba = await getBrandingApproval({editor, article, publisher});
+        if(!ba){
+            console.log(`${article} did not get through branding`)
+        }
 
-    if(!ba){
-        console.log(`${article} did not get through branding`)
+        const endTime = new Date(Date.now()).toString();
+
+        techPub = {
+            startTime,
+            techEdit: te,
+            proofread: pr,
+            copyEdit: ce,
+            formatEdit: fe,
+            brandingApproval: ba,
+            endTime
+        }
     }
+    else if((wf.patched('V3')) ){
+        let editor=await getEditor();
+        const te = await techEdit({editor, article, publisher});
 
-    const endTime = new Date(Date.now()).toString();
+        editor=await getEditor();
+        const pr = await proofread({editor, article, publisher});
 
-    const techPub = {
-        startTime,
-        techEdit: te,
-        proofread: pr,
-        copyEdit: ce,
-        formatEdit: fe,
-        brandingApproval: ba,
-        endTime
+        editor=await getEditor();
+        const ce = await copyEdit({editor, article, publisher});
+
+        editor=await getEditor();
+        const fe = await formatEdit({editor, article, publisher});
+
+        editor=await getEditor();
+        const ba = await getBrandingApproval({editor, article, publisher});
+
+        if(!ba){
+            console.log(`${article} did not get through branding`)
+        }
+        techPub = {
+            startTime,
+            techEdit: te,
+            proofread: pr,
+            copyEdit: ce,
+            formatEdit: fe,
+            brandingApproval: ba,
+            endTime:  new Date(Date.now()).toString()
+        }
+    }
+    else {
+        let editor=await getEditor();
+
+        const pr = await proofread({editor, article, publisher});
+
+        editor=await getEditor();
+        const te = await techEdit({editor, article, publisher});
+
+        editor=await getEditor();
+        const ce = await copyEdit({editor, article, publisher});
+
+        editor=await getEditor();
+        const fe = await formatEdit({editor, article, publisher});
+
+        techPub = {
+            startTime,
+            proofread: pr,
+            techEdit: te,
+            copyEdit: ce,
+            formatEdit: fe,
+            endTime: new Date(Date.now()).toString()
+        }
     }
 
     console.log(JSON.stringify(techPub,null, 2));
