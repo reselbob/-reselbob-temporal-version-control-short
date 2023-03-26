@@ -12,7 +12,11 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
     }
 });
 
+/***************************
+ create a workflow type named techPublishingWorkflow
+ ******************************/
 export async function techPublishingWorkflow(): Promise<void> {
+    //Put activities here
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
 
