@@ -1,6 +1,6 @@
 import { Connection, WorkflowClient } from '@temporalio/client';
 import {techPublishingWorkflow} from './workflows';
-import { nanoid } from 'nanoid';;
+import { nanoid } from 'nanoid';
 
 async function run() {
     //Connect to localhost with default ConnectionOptions.
