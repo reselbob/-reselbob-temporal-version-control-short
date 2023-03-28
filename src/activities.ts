@@ -14,10 +14,16 @@ export async function getArticle(): Promise<string>  {
 export async function getEditor(): Promise<string>  {
     const data = fs.readFileSync(dataFileSpec,
         {encoding:'utf8', flag:'r'});
-    const articles = JSON.parse(data).editors;
-    const randomIndex = Math.floor(Math.random() * articles.length);
-    const randomEntry = articles[randomIndex];
-    return randomEntry;
+    const editors = JSON.parse(data).editors;
+    let randomEntry = '';
+    while (randomEntry === '' || randomEntry.includes("Fred") || randomEntry.includes("Elmer")) {
+        const randomIndex = Math.floor(Math.random() * editors.length);
+        randomEntry = editors[randomIndex];
+        if (randomEntry != '' && !randomEntry.includes("Fred") && !randomEntry.includes("Elmer")) {
+            return randomEntry;
+        }
+    }
+    return 'Unknown';
 }
 
 
