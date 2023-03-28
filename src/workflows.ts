@@ -1,10 +1,17 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
+import type * as activities_v4 from './activities_v4';
 
-// Get the activities function in order to make them to the workflow.
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBrandingApproval} = wf.proxyActivities<typeof activities>({
-    //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
+    startToCloseTimeout: '4 seconds',
+    retry: {
+        backoffCoefficient: 1,
+        maximumAttempts: 2,
+    }
+});
+
+const {proofread_v4, copyEdit_v4, techEdit_v4, formatEdit_v4, getBrandingApproval_v4} = wf.proxyActivities<typeof activities_v4>({
     startToCloseTimeout: '4 seconds',
     retry: {
         backoffCoefficient: 1,
@@ -19,19 +26,19 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     let techPub = {};
     if(wf.patched('V4')) {
         editor = await getEditor();
-        const te = await techEdit({editor, article, publisher});
+        const te = await techEdit_v4({editor, article, publisher});
 
         editor = await getEditor();
-        const pr = await proofread({editor, article, publisher});
+        const pr = await proofread_v4({editor, article, publisher});
 
         editor = await getEditor();
-        const ce = await copyEdit({editor, article, publisher});
+        const ce = await copyEdit_v4({editor, article, publisher});
 
         editor = await getEditor();
-        const fe = await formatEdit({editor, article, publisher});
+        const fe = await formatEdit_v4({editor, article, publisher});
 
         editor = '';
-        const ba = await getBrandingApproval({editor, article, publisher});
+        const ba = await getBrandingApproval_v4({editor, article, publisher});
 
         if(!ba){
             console.log(`${article} did not get through branding`)
@@ -51,19 +58,19 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     }
     else if((wf.patched('V3')) ){
         let editor=await getEditor();
-        const te = await techEdit({editor, article, publisher});
+        const te = await techEdit(editor, article);
 
         editor=await getEditor();
-        const pr = await proofread({editor, article, publisher});
+        const pr = await proofread(editor, article);
 
         editor=await getEditor();
-        const ce = await copyEdit({editor, article, publisher});
+        const ce = await copyEdit(editor, article);
 
         editor=await getEditor();
-        const fe = await formatEdit({editor, article, publisher});
+        const fe = await formatEdit(editor, article);
 
         editor=await getEditor();
-        const ba = await getBrandingApproval({editor, article, publisher});
+        const ba = await getBrandingApproval(article);
 
         if(!ba){
             console.log(`${article} did not get through branding`)
@@ -81,16 +88,16 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     else {
         let editor=await getEditor();
 
-        const pr = await proofread({editor, article, publisher});
+        const pr = await proofread(editor, article);
 
         editor=await getEditor();
-        const te = await techEdit({editor, article, publisher});
+        const te = await techEdit(editor, article);
 
         editor=await getEditor();
-        const ce = await copyEdit({editor, article, publisher});
+        const ce = await copyEdit(editor, article);
 
         editor=await getEditor();
-        const fe = await formatEdit({editor, article, publisher});
+        const fe = await formatEdit(editor, article);
 
         techPub = {
             startTime,
