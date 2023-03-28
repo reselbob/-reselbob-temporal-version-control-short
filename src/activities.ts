@@ -83,4 +83,3 @@ export async function checkStyle(editor: string, article:string): Promise<string
     const msg = `${editor} is style checking: ${article}.`;
     return msg;
 }
-
