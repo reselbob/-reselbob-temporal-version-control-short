@@ -1,9 +1,21 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
-import type * as activities from './activities';
-import type * as activities_v4 from './activities_v4';
+import type * as activities from './activities'
 
-const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBrandingApproval} = wf.proxyActivities<typeof activities>({
+const {
+    getArticle,
+    getEditor,
+    proofread,
+    copyEdit,
+    techEdit,
+    formatEdit,
+    getBrandingApproval,
+    techEdit_v4,
+    proofread_v4,
+    copyEdit_v4,
+    formatEdit_v4,
+    getBrandingApproval_v4
+} = wf.proxyActivities<typeof activities>({
     startToCloseTimeout: '4 seconds',
     retry: {
         backoffCoefficient: 1,
@@ -11,13 +23,13 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBran
     }
 });
 
-const {proofread_v4, copyEdit_v4, techEdit_v4, formatEdit_v4, getBrandingApproval_v4} = wf.proxyActivities<typeof activities_v4>({
+/*const {proofread_v4, copyEdit_v4, techEdit_v4, formatEdit_v4, getBrandingApproval_v4, copyEdit_v4, copyEdit_v4, } = wf.proxyActivities<typeof activities_v4>({
     startToCloseTimeout: '4 seconds',
     retry: {
         backoffCoefficient: 1,
         maximumAttempts: 2,
     }
-});
+});*/
 
 export async function techPublishingWorkflow(publisher: string): Promise<void> {
     const startTime = new Date(Date.now()).toString();
@@ -111,5 +123,3 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
 
     console.log(JSON.stringify(techPub,null, 2));
 }
-
-

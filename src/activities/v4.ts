@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import {IConfig} from "./config";
+import {IConfig} from "../config";
 
 export async function proofread_v4(config : IConfig): Promise<string> {
     const msg = `${config.editor} is proofreading: ${config.article} for publisher - ${config.publisher}.`;
