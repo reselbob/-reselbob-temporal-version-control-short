@@ -15,7 +15,7 @@ export async function proofread_v4(config : IConfig): Promise<string> {
 
 export async function copyEdit_v4(config : IConfig): Promise<string> {
     const arr : string[] = [];
-    arr.push(`${config.editor} is copy editing: ${config.article}.`);
+    arr.push(`${config.editor} is copy editing: ${config.article} for publisher - ${config.publisher}.`);
     arr.push(await checkStyle_v4(config));
     return JSON.stringify(arr, null, 2);
 }
