@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-const dataFileSpec = path.join(__dirname, '../data', 'data.json')
+const dataFileSpec = path.join(__dirname, '../../data', 'data.json')
 export async function getArticle(): Promise<string>  {
     const data = fs.readFileSync(dataFileSpec,
         {encoding:'utf8', flag:'r'});
