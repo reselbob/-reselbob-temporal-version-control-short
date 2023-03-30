@@ -1,5 +1,4 @@
 import * as wf from '@temporalio/workflow';
-// Only import the activity types
 import type * as activities from './activities'
 
 const {
