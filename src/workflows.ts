@@ -24,7 +24,6 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const fe = await formatEdit(await getEditor(), article);
 
-
     const endTime = new Date(Date.now()).toString();
 
     const techPub = {
