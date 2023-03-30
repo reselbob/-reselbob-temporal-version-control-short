@@ -4,7 +4,7 @@ import type * as activities from './activities';
 import { patched } from '@temporalio/workflow';
 
 // Get the activities function in order to make them to the workflow.
-const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit, getBrandingApproval} = wf.proxyActivities<typeof activities>({
+const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
     startToCloseTimeout: '4 seconds',
     retry: {
@@ -27,18 +27,12 @@ export async function techPublishingWorkflow(): Promise<void> {
 
         const fe = await formatEdit(await getEditor(), article);
 
-        const ba = await getBrandingApproval(article);
-
-        if(!ba){
-            console.log(`${article} did not get through branding`)
-        }
         techPub = {
             startTime,
             techEdit: te,
             proofread: pr,
             copyEdit: ce,
             formatEdit: fe,
-            brandingApproval: ba,
             endTime:  new Date(Date.now()).toString()
         }
     }else {
