@@ -22,7 +22,7 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const pr = await proofread(await getEditor(), article);
     //             millisec * sec * min
-    await wf.sleep(1000 * 60 * 5);
+    await wf.sleep(1000 * 60 * 10);
     const te = await techEdit(await getEditor(), article);
 
     const ce = await copyEdit(await getEditor(), article);
