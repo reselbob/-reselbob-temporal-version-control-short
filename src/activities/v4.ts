@@ -20,18 +20,6 @@ export async function copyEdit_v4(config : IConfig): Promise<string> {
     return JSON.stringify(arr, null, 2);
 }
 
-export async function getBrandingApproval_v4(config : IConfig): Promise<boolean> {
-    let b = true
-    let  msg = `${config.article} has been approved by the Branding Committee for publisher - ${config.publisher}.`
-    if(config.article.includes('Understanding EVM Bytecode') || config.article.includes('10 Tips for Bash Scripting') ) b = false;
-
-    if(!b){
-        msg = `${config. article} has NOT been approved by the Branding Committee for publisher - ${config.publisher}.`
-    }
-    console.log(msg);
-    return b;
-}
-
 export async function formatEdit_v4(config : IConfig): Promise<string> {
     const msg = `${config.editor} is format editing: ${config.article} for publisher - ${config.publisher}.`;
     console.log(msg);
