@@ -16,9 +16,9 @@ export async function techPublishingWorkflow(): Promise<void> {
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
 
-    const te = await techEdit(await getEditor(), article);
-
     const pr = await proofread(await getEditor(), article);
+
+    const te = await techEdit(await getEditor(), article);
 
     const ce = await copyEdit(await getEditor(), article);
 
@@ -29,8 +29,8 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const techPub = {
         startTime,
-        techEdit: te,
         proofread: pr,
+        techEdit: te,
         copyEdit: ce,
         formatEdit: fe,
         endTime
