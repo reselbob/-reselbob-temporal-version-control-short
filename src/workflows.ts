@@ -21,6 +21,8 @@ const {
 });
 
 export async function techPublishingWorkflow(publisher: string): Promise<void> {
+    //                 millisec * sec * min
+    const sleepPeriod = (1000 * 60 * 5)
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
     let editor = '';
@@ -36,7 +38,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         editor = await getEditor();
         te = await techEdit_v4({editor, article, publisher});
         //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+        await wf.sleep(sleepPeriod);
         editor = await getEditor();
         pr = await proofread_v4({editor, article, publisher});
 
@@ -51,8 +53,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         v = 'V3';
         te = await techEdit(await getEditor(), article);
 
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+        await wf.sleep(sleepPeriod);
         pr = await proofread(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -63,8 +64,8 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     if (wf.patched('V2')) {
         v = 'V2';
         pr = await proofread(await getEditor(), article);
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+
+        await wf.sleep(sleepPeriod);
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -75,8 +76,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     if (wf.patched('V1')) {
         v = 'V1';
         pr = await proofread(await getEditor(), article);
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+        await wf.sleep(sleepPeriod);
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
