@@ -1,5 +1,4 @@
 import * as wf from '@temporalio/workflow';
-// Only import the activity types
 import type * as activities from './activities';
 
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
@@ -10,7 +9,7 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
         maximumAttempts: 2,
     }
 });
-/*
+/**
 NOTE: The workflow has a delay between the first and second activity
       as defined by the variable sleepPeriod. The delay is injected
       so as to emulate long running workflow behavior.
