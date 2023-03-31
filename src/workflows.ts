@@ -20,6 +20,11 @@ const {
     }
 });
 
+/*
+NOTE: The workflow has a delay between the first and second activity
+      as defined by the variable sleepPeriod. The delay is injected
+      so as to emulate long running workflow behavior.
+ */
 export async function techPublishingWorkflow(publisher: string): Promise<void> {
     //                 millisec * sec * min
     const sleepPeriod = (1000 * 60 * 5)
