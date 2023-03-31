@@ -16,7 +16,9 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
  create a workflow type named techPublishingWorkflow
  ******************************/
 export async function techPublishingWorkflow(): Promise<void> {
-    //Put activities here
+    //                  millisec * sec * min
+    const sleepPeriod = (1000 * 60 * 5)
+
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
     const v = 'V1';
@@ -25,10 +27,11 @@ export async function techPublishingWorkflow(): Promise<void> {
     let ce = ''
     let fe = '';
 
-    if(wf.patched('V1')) {
+    if (wf.patched('V1')) {
         pr = await proofread(await getEditor(), article);
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+
+        await wf.sleep(sleepPeriod);
+
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -40,7 +43,7 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const techPub = {
         startTime,
-        version:v,
+        version: v,
         proofread: pr,
         techEdit: te,
         copyEdit: ce,
@@ -48,6 +51,6 @@ export async function techPublishingWorkflow(): Promise<void> {
         endTime
     }
 
-    console.log(JSON.stringify(techPub,null, 2));
+    console.log(JSON.stringify(techPub, null, 2));
 }
 
