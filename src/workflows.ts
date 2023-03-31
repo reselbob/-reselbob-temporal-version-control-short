@@ -19,20 +19,28 @@ export async function techPublishingWorkflow(): Promise<void> {
     //Put activities here
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
+    const v = 'V1-error';
+    let pr = '';
+    let te = '';
+    let ce = ''
+    let fe = '';
 
-    const pr = await proofread(await getEditor(), article);
-    //             millisec * sec * min
-    await wf.sleep(1000 * 60 * 10);
-    const te = await techEdit(await getEditor(), article);
+    if(wf.patched('V1')) {
+        pr = await proofread(await getEditor(), article);
+        //             millisec * sec * min
+        await wf.sleep(1000 * 60 * 5);
+        te = await techEdit(await getEditor(), article);
 
-    const ce = await copyEdit(await getEditor(), article);
+        ce = await copyEdit(await getEditor(), article);
 
-    const fe = await formatEdit(await getEditor(), article);
+        fe = await formatEdit(await getEditor(), article);
+    }
 
     const endTime = new Date(Date.now()).toString();
 
     const techPub = {
         startTime,
+        version:v,
         proofread: pr,
         techEdit: te,
         copyEdit: ce,
