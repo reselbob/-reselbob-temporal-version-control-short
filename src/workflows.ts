@@ -93,6 +93,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
 
     const techPub = {
         startTime,
+        version: v,
         techEdit: te,
         proofread: pr,
         copyEdit: ce,
