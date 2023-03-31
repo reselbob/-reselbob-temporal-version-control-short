@@ -1,7 +1,7 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import { patched } from '@temporalio/workflow';
+import {patched} from '@temporalio/workflow';
 
 // Get the activities function in order to make them to the workflow.
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
@@ -17,46 +17,61 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
+
+    let v = '';
+    let pr = '';
+    let te = '';
+    let ce = ''
+    let fe = '';
     let techPub = {};
     if (patched('V3')) {
-        const te = await techEdit(await getEditor(), article);
+        v = 'V3';
+        te = await techEdit(await getEditor(), article);
 
         //             millisec * sec * min
         await wf.sleep(1000 * 60 * 5);
-        const pr = await proofread(await getEditor(), article);
+        pr = await proofread(await getEditor(), article);
 
-        const ce = await copyEdit(await getEditor(), article);
+        ce = await copyEdit(await getEditor(), article);
 
-        const fe = await formatEdit(await getEditor(), article);
-
-        techPub = {
-            startTime,
-            techEdit: te,
-            proofread: pr,
-            copyEdit: ce,
-            formatEdit: fe,
-            endTime:  new Date(Date.now()).toString()
-        }
-    }else {
-        const pr = await proofread(await getEditor(), article);
-
-        const te = await techEdit(await getEditor(), article);
-
-        const ce = await copyEdit(await getEditor(), article);
-
-        const fe = await formatEdit(await getEditor(), article);
-
-        techPub = {
-            startTime,
-            proofread: pr,
-            techEdit: te,
-            copyEdit: ce,
-            formatEdit: fe,
-            endTime: new Date(Date.now()).toString()
-        }
+        fe = await formatEdit(await getEditor(), article);
     }
 
-    console.log(JSON.stringify(techPub,null, 2));
+    if (wf.patched('V2')) {
+        v = 'V2';
+        pr = await proofread(await getEditor(), article);
+        //             millisec * sec * min
+        await wf.sleep(1000 * 60 * 5);
+        te = await techEdit(await getEditor(), article);
+
+        ce = await copyEdit(await getEditor(), article);
+
+        fe = await formatEdit(await getEditor(), article);
+    }
+
+    if (wf.patched('V1')) {
+        v = 'V1';
+        pr = await proofread(await getEditor(), article);
+        //             millisec * sec * min
+        await wf.sleep(1000 * 60 * 5);
+        te = await techEdit(await getEditor(), article);
+
+        ce = await copyEdit(await getEditor(), article);
+
+        fe = await formatEdit(await getEditor(), article);
+    }
+
+    techPub = {
+        startTime,
+        version: v,
+        techEdit: te,
+        proofread: pr,
+        copyEdit: ce,
+        formatEdit: fe,
+        endTime: new Date(Date.now()).toString()
+    }
+
+    console.log(JSON.stringify(techPub, null, 2));
 }
 
 
