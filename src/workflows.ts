@@ -27,6 +27,19 @@ export async function techPublishingWorkflow(): Promise<void> {
     let ce = ''
     let fe = '';
 
+    if (wf.patched('V1-error')) {
+
+        pr = await proofread(await getEditor(), article);
+
+        await wf.sleep(sleepPeriod);
+
+        te = await techEdit(await getEditor(), article);
+
+        ce = await copyEdit(await getEditor(), article);
+
+        fe = await formatEdit(await getEditor(), article);
+    }
+
     if (wf.patched('V1')) {
         pr = await proofread(await getEditor(), article);
 
