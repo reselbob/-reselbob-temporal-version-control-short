@@ -27,7 +27,7 @@ export async function techPublishingWorkflow(): Promise<void> {
     let ce = ''
     let fe = '';
 
-    let v = 'V-A';
+    let v = 'Release_original';
 
     pr = await proofread(await getEditor(), article);
 
