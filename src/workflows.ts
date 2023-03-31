@@ -43,8 +43,8 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     let ce = ''
     let fe = '';
 
-    if (wf.patched('Release_C')) {
-        v = 'Release_C';
+    if (wf.patched('Release_config_object')) {
+        v = 'Release_config_object';
 
         editor = await getEditor();
         te = await techEdit_v4({editor, article, publisher});
@@ -60,8 +60,8 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         editor = await getEditor();
         fe = await formatEdit_v4({editor, article, publisher});
 
-    } else if (wf.patched('V-B')) {
-        v = 'Release_B';
+    } else if (wf.patched('Release_activity_reorder')) {
+        v = 'Release_activity_reorder';
         te = await techEdit(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
@@ -72,7 +72,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
 
         fe = await formatEdit(await getEditor(), article);
     } else {
-        v = 'Release_A';
+        v = 'Release_original';
         pr = await proofread(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
