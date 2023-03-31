@@ -31,14 +31,15 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     let te = '';
     let ce = ''
     let fe = '';
-    let techPub = {};
+
     if (wf.patched('V4')) {
         v = 'V4';
 
         editor = await getEditor();
         te = await techEdit_v4({editor, article, publisher});
-        //             millisec * sec * min
+
         await wf.sleep(sleepPeriod);
+
         editor = await getEditor();
         pr = await proofread_v4({editor, article, publisher});
 
@@ -54,6 +55,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         te = await techEdit(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
+
         pr = await proofread(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -66,6 +68,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         pr = await proofread(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
+
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -76,7 +79,9 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     if (wf.patched('V1')) {
         v = 'V1';
         pr = await proofread(await getEditor(), article);
+
         await wf.sleep(sleepPeriod);
+
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -86,7 +91,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
 
     const endTime = new Date(Date.now()).toString();
 
-    techPub = {
+    const techPub = {
         startTime,
         techEdit: te,
         proofread: pr,
