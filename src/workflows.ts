@@ -20,23 +20,21 @@ export async function techPublishingWorkflow(): Promise<void> {    //           
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
-    const v = 'V1-error';
+    const v = 'V1';
     let pr = '';
     let te = '';
     let ce = ''
     let fe = '';
 
-    if (wf.patched('V1-error')) {
-        pr = await proofread(await getEditor(), article);
+    pr = await proofread(await getEditor(), article);
 
-        await wf.sleep(sleepPeriod);
+    await wf.sleep(sleepPeriod);
 
-        te = await techEdit(await getEditor(), article);
+    te = await techEdit(await getEditor(), article);
 
-        ce = await copyEdit(await getEditor(), article);
+    ce = await copyEdit(await getEditor(), article);
 
-        fe = await formatEdit(await getEditor(), article);
-    }
+    fe = await formatEdit(await getEditor(), article);
 
     const endTime = new Date(Date.now()).toString();
 
