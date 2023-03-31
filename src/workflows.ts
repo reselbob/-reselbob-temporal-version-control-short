@@ -1,6 +1,12 @@
 import * as wf from '@temporalio/workflow';
 import type * as activities from './activities'
 
+/**
+ Get the activities for both the legacy version that takes
+ two string parameters int the activity function signature
+ and the new version (V4) that passes a configuration object
+ to an activity as a single parameter.
+ */
 const {
     getArticle,
     getEditor,
@@ -20,7 +26,7 @@ const {
     }
 });
 
-/*
+/**
 NOTE: The workflow has a delay between the first and second activity
       as defined by the variable sleepPeriod. The delay is injected
       so as to emulate long running workflow behavior.
@@ -37,8 +43,8 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
     let ce = ''
     let fe = '';
 
-    if (wf.patched('V-C')) {
-        v = 'V-C';
+    if (wf.patched('Release_C')) {
+        v = 'Release_C';
 
         editor = await getEditor();
         te = await techEdit_v4({editor, article, publisher});
@@ -55,7 +61,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         fe = await formatEdit_v4({editor, article, publisher});
 
     } else if (wf.patched('V-B')) {
-        v = 'V-B';
+        v = 'Release_B';
         te = await techEdit(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
@@ -66,7 +72,7 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
 
         fe = await formatEdit(await getEditor(), article);
     } else {
-        v = 'V-A';
+        v = 'Release_A';
         pr = await proofread(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
