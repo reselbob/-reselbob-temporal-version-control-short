@@ -1,7 +1,6 @@
 import * as wf from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import {patched} from '@temporalio/workflow';
 
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
