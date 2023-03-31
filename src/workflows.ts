@@ -26,8 +26,8 @@ export async function techPublishingWorkflow(): Promise<void> {
     let ce = ''
     let fe = '';
 
-    if (wf.patched('V3')) {
-        v = 'V3';
+    if (wf.patched('V-B')) {
+        v = 'V-B';
         te = await techEdit(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
@@ -37,23 +37,8 @@ export async function techPublishingWorkflow(): Promise<void> {
         ce = await copyEdit(await getEditor(), article);
 
         fe = await formatEdit(await getEditor(), article);
-    }
-
-    if (wf.patched('V2')) {
-        v = 'V2';
-        pr = await proofread(await getEditor(), article);
-
-        await wf.sleep(sleepPeriod);
-
-        te = await techEdit(await getEditor(), article);
-
-        ce = await copyEdit(await getEditor(), article);
-
-        fe = await formatEdit(await getEditor(), article);
-    }
-
-    if (wf.patched('V1')) {
-        v = 'V1';
+    } else {
+        v = 'V-A';
         pr = await proofread(await getEditor(), article);
 
         await wf.sleep(sleepPeriod);
@@ -64,6 +49,7 @@ export async function techPublishingWorkflow(): Promise<void> {
 
         fe = await formatEdit(await getEditor(), article);
     }
+
 
     const techPub = {
         startTime,
@@ -77,5 +63,3 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     console.log(JSON.stringify(techPub, null, 2));
 }
-
-
