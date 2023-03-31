@@ -14,6 +14,8 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
 });
 
 export async function techPublishingWorkflow(): Promise<void> {
+    //                  millisec * sec * min
+    const sleepPeriod = (1000 * 60 * 5)
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
@@ -24,12 +26,12 @@ export async function techPublishingWorkflow(): Promise<void> {
     let ce = ''
     let fe = '';
     let techPub = {};
-    if (patched('V3')) {
+    if (wf.patched('V3')) {
         v = 'V3';
         te = await techEdit(await getEditor(), article);
 
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+
+        await wf.sleep(sleepPeriod);
         pr = await proofread(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -40,8 +42,8 @@ export async function techPublishingWorkflow(): Promise<void> {
     if (wf.patched('V2')) {
         v = 'V2';
         pr = await proofread(await getEditor(), article);
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+
+        await wf.sleep(sleepPeriod);
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
@@ -52,8 +54,8 @@ export async function techPublishingWorkflow(): Promise<void> {
     if (wf.patched('V1')) {
         v = 'V1';
         pr = await proofread(await getEditor(), article);
-        //             millisec * sec * min
-        await wf.sleep(1000 * 60 * 5);
+
+        await wf.sleep(sleepPeriod);
         te = await techEdit(await getEditor(), article);
 
         ce = await copyEdit(await getEditor(), article);
