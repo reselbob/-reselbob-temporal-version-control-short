@@ -20,11 +20,13 @@ export async function techPublishingWorkflow(): Promise<void> {    //           
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
-    const v = 'V1';
+
     let pr = '';
     let te = '';
     let ce = ''
     let fe = '';
+
+    let v = 'V-A';
 
     pr = await proofread(await getEditor(), article);
 
