@@ -14,7 +14,7 @@ async function run() {
 
     const handle = await client.start(techPublishingWorkflow, {
         taskQueue: 'technical-publishing',
-        cronSchedule: '*/5 * * * *',
+        cronSchedule: '*/4 * * * *',
         workflowId: workflowId
     });
     console.log(`Started workflow ${handle.workflowId}`);
