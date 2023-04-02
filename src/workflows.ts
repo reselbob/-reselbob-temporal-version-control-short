@@ -17,7 +17,7 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
  */
 export async function techPublishingWorkflow(): Promise<void> {
     //                  millisec * sec * min
-    const sleepPeriod = (1000 * 60 * 5);
+    const sleepPeriod = (1000 * 60 * 4);
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
