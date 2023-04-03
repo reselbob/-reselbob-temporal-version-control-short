@@ -1,6 +1,6 @@
 import * as wf from '@temporalio/workflow';
 import type * as activities from './activities';
-
+import {timings} from "./timings";
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
     startToCloseTimeout: '4 seconds',
@@ -16,9 +16,6 @@ const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.pr
  to emulate long running workflow behavior.
  */
 export async function techPublishingWorkflow(): Promise<void> {
-    //                  millisec * sec * min
-    const sleepPeriod01 = (1000 * 60 * 3);
-    const sleepPeriod02 = (1000 * 60 * 1);
 
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
@@ -32,11 +29,11 @@ export async function techPublishingWorkflow(): Promise<void> {
 
     pr = await proofread(await getEditor(), article);
 
-    await wf.sleep(sleepPeriod01);
+    await wf.sleep(timings.sleepPeriod01);
 
     te = await techEdit(await getEditor(), article);
 
-    await wf.sleep(sleepPeriod02);
+    await wf.sleep(timings.sleepPeriod02);
 
     ce = await copyEdit(await getEditor(), article);
 
