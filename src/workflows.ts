@@ -33,7 +33,9 @@ NOTE: The workflow has a delay between the first and second activity
  */
 export async function techPublishingWorkflow(publisher: string): Promise<void> {
     //                 millisec * sec * min
-    const sleepPeriod = (1000 * 60 * 5)
+    const sleepPeriod01 = (1000 * 60 * 3)
+    const sleepPeriod02 = (1000 * 60 * 1)
+
     const startTime = new Date(Date.now()).toString();
     const article = await getArticle();
     let editor = '';
@@ -49,10 +51,12 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         editor = await getEditor();
         te = await techEdit_v4({editor, article, publisher});
 
-        await wf.sleep(sleepPeriod);
+        await wf.sleep(sleepPeriod01);
 
         editor = await getEditor();
         pr = await proofread_v4({editor, article, publisher});
+
+        await wf.sleep(sleepPeriod02);
 
         editor = await getEditor();
         ce = await copyEdit_v4({editor, article, publisher});
@@ -64,9 +68,11 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         v = 'Release_activity_reorder';
         te = await techEdit(await getEditor(), article);
 
-        await wf.sleep(sleepPeriod);
+        await wf.sleep(sleepPeriod01);
 
         pr = await proofread(await getEditor(), article);
+
+        await wf.sleep(sleepPeriod02);
 
         ce = await copyEdit(await getEditor(), article);
 
@@ -75,9 +81,11 @@ export async function techPublishingWorkflow(publisher: string): Promise<void> {
         v = 'Release_original';
         pr = await proofread(await getEditor(), article);
 
-        await wf.sleep(sleepPeriod);
+        await wf.sleep(sleepPeriod01);
 
         te = await techEdit(await getEditor(), article);
+
+        await wf.sleep(sleepPeriod02);
 
         ce = await copyEdit(await getEditor(), article);
 
