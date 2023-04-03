@@ -1,5 +1,6 @@
 import { Connection, WorkflowClient } from '@temporalio/client';
 import {techPublishingWorkflow} from './workflows';
+import {timings} from "./timings";
 import { nanoid } from 'nanoid';
 
 async function run() {
@@ -16,7 +17,7 @@ async function run() {
 
     const handle = await client.start(techPublishingWorkflow, {
         taskQueue: 'technical-publishing',
-        cronSchedule: '*/5 * * * *',
+        cronSchedule: timings.cronSchedule,
         workflowId: workflowId,
         args: [publisher],
     });
