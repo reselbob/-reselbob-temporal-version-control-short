@@ -23,7 +23,7 @@ async function run() {
         // @ts-ignore
         args: [publisher],
     });
-    console.log(`Started workflow ${handle.workflowId}`);
+    console.log(`Started workflow ${handle.workflowId} at ${new Date(Date.now()).toString()}`);
 }
 
 
