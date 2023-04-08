@@ -3,7 +3,7 @@ npm install
 
 git checkout V1-error
 
-SLEEP_PERIOD=190
+SLEEP_PERIOD=150
 
 echo "I will release a new version version $SLEEP_PERIOD seconds"
 
