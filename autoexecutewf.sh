@@ -5,7 +5,11 @@ git checkout V1-error
 
 SLEEP_PERIOD=150
 
-echo "I will release a new version version $SLEEP_PERIOD seconds"
+RELEASE_MESSAGE="I will release a new version of the demonstration project every $SLEEP_PERIOD seconds"
+
+echo RELEASE_MESSAGE
+
+echo "Running V1-error at $(date +"%Y-%m-%d %H:%M:%S")"
 
 P_ID=$(nohup npm start >> worker.log 2>&1 & echo $!)
 
@@ -26,6 +30,8 @@ kill $P_ID
 
 git checkout V1
 
+echo "Running V1 at $(date +"%Y-%m-%d %H:%M:%S")"
+
 V1_ID=$(nohup npm run workflow-from-client > outputv1.log 2>&1 & echo $!)
 
 P_ID=$(nohup npm start >> worker.log 2>&1 & echo $!)
@@ -44,6 +50,8 @@ echo "Killing P_ID is $P_ID"
 kill $P_ID
 
 git checkout V2
+
+echo "Running V2 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V2_ID=$(nohup npm run workflow-from-client > outputv2.log 2>&1 & echo $!)
 
@@ -65,6 +73,8 @@ kill $P_ID
 
 git checkout V3
 
+echo "Running V3 at $(date +"%Y-%m-%d %H:%M:%S")"
+
 V3_ID=$(nohup npm run workflow-from-client > output-v3.log 2>&1 & echo $!)
 
 P_ID=$(nohup npm start >> worker.log 2>&1 & echo $!)
@@ -84,6 +94,8 @@ echo "Killing P_ID is $P_ID"
 kill $P_ID
 
 git checkout V4
+
+echo "Running V4 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V4_ID=$(nohup npm run workflow-from-client > output-v4.log 2>&1 & echo $!)
 

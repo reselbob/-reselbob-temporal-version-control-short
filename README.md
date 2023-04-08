@@ -23,12 +23,51 @@ The [**V4**](https://github.com/reselbob/temporal-version-control-01/tree/V4) ve
 
 
 # Automatically running the scenarios
-## [UNDER CONSTRUCTION]
+
+This project ships with a bash script that will start a new version of the demonstration code at a set interval.
+
+You can view the script named autotexecwf.sh [here](./autoexecutewf.sh). You can alter the interval at which the version of code in incremented up and started by alter the value assigned to the variable `SLEEP_PERIOD`.
+
+Run the following steps to run the bash script.
 
 1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
 2. Execute `cd temporal-version-control`
 3. Execute `sh autoexecutewf.sh`
 
-MORE TO COME
+The script will execute all versions of the demonstration project. You'll see output similar to the following when you run the script:
+
+```bash
+ranch 'V1-error' set up to track remote branch 'V1-error' from 'origin'.
+Switched to a new branch 'V1-error'
+I will release a new version version 150 seconds
+P_ID is 3587
+V1_ERR_ID is 3589
+Waiting ... on V1
+Killing P_ID is 3587
+Branch 'V1' set up to track remote branch 'V1' from 'origin'.
+Switched to a new branch 'V1'
+P_ID is 3766
+V1_ID is 3764
+Waiting ... on V2
+Killing P_ID is 3766
+Branch 'V2' set up to track remote branch 'V2' from 'origin'.
+Switched to a new branch 'V2'
+P_ID is 3960
+V2_ID is 3958
+Waiting ... on V3
+Killing P_ID is 3960
+Branch 'V3' set up to track remote branch 'V3' from 'origin'.
+Switched to a new branch 'V3'
+P_ID is 4171
+V3_ID is 4169
+Waiting ... on V4
+Killing P_ID is 4171
+Branch 'V4' set up to track remote branch 'V4' from 'origin'.
+Switched to a new branch 'V4'
+P_ID is 4441
+V4_ID is 4439
+All versions released
+
+```
 
 
