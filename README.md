@@ -20,3 +20,15 @@ The [**V2**]() version modifies the copyEdit activity by adding style checking. 
 The [**V3**](https://github.com/reselbob/temporal-version-control-01/tree/V3) version implements a significant change by altering the sequence in which activities are executed within the workflow. Changing the sequence of activities affects the determinism of the workflow. Thus, special measures need to be taken in how the workflow is programmed in order for the V3 version to run and not throw a fatal error.
 
 The [**V4**](https://github.com/reselbob/temporal-version-control-01/tree/V4) version makes another significant change. It changes the signature of all the activity functions. Activity functions in prior versions of the workflow took two parameters: editor and article, The V4 version takes a new approach and passes a single parameter which is a configuration object. The configuration object has properties for the editor, article and also a new piece of information, the publisher. The name of the publisher is declared as a command line argument when the Temporal client starts the workflow. If no publisher is declared, a default value of Anonymous is assigned as the name of the publisher.
+
+
+# Automatically running the scenarios
+## [UNDER CONSTRUCTION]
+
+1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
+2. Execute `cd temporal-version-control`
+3. Execute `sh autoexecutewf.sh`
+
+MORE TO COME
+
+
