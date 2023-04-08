@@ -19,7 +19,7 @@ echo "P_ID is $P_ID"
 
 echo "V1_ERR_ID is $V1_ERR_ID"
 
-echo "Waiting ... on V1"
+echo "Waiting ... on V1\n\n"
 
 # V1
 sleep $SLEEP_PERIOD
@@ -40,7 +40,7 @@ echo "P_ID is $P_ID"
 
 echo "V1_ID is $V1_ID"
 
-echo "Waiting ... on V2"
+echo "Waiting ... on V2\n\n"
 # V2
 
 sleep $SLEEP_PERIOD
@@ -61,7 +61,7 @@ echo "P_ID is $P_ID"
 
 echo "V2_ID is $V2_ID"
 
-echo "Waiting ... on V3"
+echo "Waiting ... on V3\n\n"
 
 # V3
 
@@ -83,7 +83,7 @@ echo "P_ID is $P_ID"
 
 echo "V3_ID is $V3_ID"
 
-echo "Waiting ... on V4"
+echo "Waiting ... on V4\n\n"
 
 # V4
 
@@ -105,5 +105,5 @@ echo "P_ID is $P_ID"
 
 echo "V4_ID is $V4_ID"
 
-echo "All versions released"
+echo "\n\nAll versions released"
 
