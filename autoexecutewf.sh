@@ -5,6 +5,8 @@ git checkout V1-error
 
 SLEEP_PERIOD=190
 
+echo "I will release a new version version $SLEEP_PERIOD seconds"
+
 P_ID=$(nohup npm start >> worker.log 2>&1 & echo $!)
 
 V1_ERR_ID=$(nohup npm run workflow-from-client > outputv1-error.log 2>&1 & echo $!)
