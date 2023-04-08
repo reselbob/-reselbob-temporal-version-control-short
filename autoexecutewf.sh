@@ -1,7 +1,7 @@
 #!/bin/bash
 npm install
 
-git checkout v1-error
+git checkout V1-error
 
 P_ID=$(nohup npm start > output1.log 2>&1 & echo $!)
 
