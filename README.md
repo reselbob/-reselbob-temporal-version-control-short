@@ -9,15 +9,14 @@ The project emulates a technical publishing workflow that consists of the follow
 - `copyEdit(article:string)`
 - `formatEdit(article:string)`
 
-The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
+The project evolves the workflow scenarios over 5 versions as shown in the illustration below.
 
-The workflow will run every 10 minutes.
+![versions](./images/versions-all.jpg)
 
-# Running the demonstration code:
+The [**first version**](https://github.com/reselbob/temporal-version-control-01/tree/V1) has an intermittent error that needs to be fixed. This version is named V1-error. The fixed version that removes the intermittent error is named V1.
 
-1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
-2. Execute `cd temporal-version-control`
-3. If the Temporal cluster is not running on the local machine, execute `sh ./setup-temporal-server.sh` to run the Temporal Server using Docker Compose.
-4. Execute `npm install` to install the dependencies.
-5. Execute `npm start` to start the Worker.
-6. In another terminal window execute, `cd temporal-version-control && npm run workflow-from-client` to run the Workflow using the Temporal.io Client.
+The [**V2**]() version modifies the copyEdit activity by adding style checking. Style checking is implemented in a function name checkStyle(editor, article) which is internal to the activity.
+
+The [**V3**](https://github.com/reselbob/temporal-version-control-01/tree/V3) version implements a significant change by altering the sequence in which activities are executed within the workflow. Changing the sequence of activities affects the determinism of the workflow. Thus, special measures need to be taken in how the workflow is programmed in order for the V3 version to run and not throw a fatal error.
+
+The [**V4**](https://github.com/reselbob/temporal-version-control-01/tree/V4) version makes another significant change. It changes the signature of all the activity functions. Activity functions in prior versions of the workflow took two parameters: editor and article, The V4 version takes a new approach and passes a single parameter which is a configuration object. The configuration object has properties for the editor, article and also a new piece of information, the publisher. The name of the publisher is declared as a command line argument when the Temporal client starts the workflow. If no publisher is declared, a default value of Anonymous is assigned as the name of the publisher.
