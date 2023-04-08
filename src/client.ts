@@ -11,7 +11,7 @@ async function run() {
         connection,
     });
 
-    const workflowId = 'workflow-' + nanoid();
+    const workflowId = 'workflow-v3-' + nanoid();
 
     const handle = await client.start(techPublishingWorkflow, {
         taskQueue: 'technical-publishing',
