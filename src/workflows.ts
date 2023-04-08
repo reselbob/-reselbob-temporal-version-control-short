@@ -3,7 +3,7 @@ import type * as activities from './activities'
 import {timings} from "./timings";
 
 /**
- Get the activities for both the legacy version that takes
+ Get the activities from both the legacy version that takes
  two string parameters int the activity function signature
  and the new version (V4) that passes a configuration object
  to an activity as a single parameter.
