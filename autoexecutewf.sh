@@ -18,7 +18,7 @@ echo "Waiting ... on V1"
 # V1
 sleep $SLEEP_PERIOD
 
-echo "P_ID is $P_ID"
+echo "Killing P_ID is $P_ID"
 
 kill $P_ID
 
@@ -36,6 +36,8 @@ echo "Waiting ... on V2"
 # V2
 
 sleep $SLEEP_PERIOD
+
+echo "Killing P_ID is $P_ID"
 
 kill $P_ID
 
@@ -55,6 +57,8 @@ echo "Waiting ... on V3"
 
 sleep $SLEEP_PERIOD
 
+echo "Killing P_ID is $P_ID"
+
 kill $P_ID
 
 git checkout V3
@@ -72,6 +76,8 @@ echo "Waiting ... on V4"
 # V4
 
 sleep $SLEEP_PERIOD
+
+echo "Killing P_ID is $P_ID"
 
 kill $P_ID
 
