@@ -18,7 +18,7 @@ async function run() {
         cronSchedule: timings.cronSchedule,
         workflowId: workflowId
     });
-    console.log(`Started workflow ${handle.workflowId}`);
+    console.log(`Started workflow ${handle.workflowId} at ${new Date(Date.now()).toString()}`);
 }
 
 
