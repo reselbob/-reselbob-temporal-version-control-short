@@ -13,12 +13,14 @@ async function run() {
         connection,
     });
 
-    const workflowId = 'workflow-' + nanoid();
+    const workflowId = 'workflow-v4-' + nanoid();
+
 
     const handle = await client.start(techPublishingWorkflow, {
         taskQueue: 'technical-publishing',
         cronSchedule: timings.cronSchedule,
         workflowId: workflowId,
+        // @ts-ignore
         args: [publisher],
     });
     console.log(`Started workflow ${handle.workflowId}`);
