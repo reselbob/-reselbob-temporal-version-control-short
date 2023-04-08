@@ -1,14 +1,10 @@
 #!/bin/bash
 
-git clone https://github.com/reselbob/temporal-version-control-01.git
-
-cd temporal-version-control
-
 git checkout v1-error
 
 npm install
 
-ts-node src/worker.ts &
+ts-node src/worker.ts
 
 ts-node src/client.ts
 
@@ -16,7 +12,7 @@ PROC_ID=$(ps -aux | grep "sh \-c ts-node src/worker.ts" | awk '{print $2}')
 
 echo $PROC_ID
 
-kill PROC_ID
+# kill PROC_ID
 
 
 sleep 150
