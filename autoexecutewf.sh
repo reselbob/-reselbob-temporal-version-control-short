@@ -3,7 +3,7 @@ npm install
 
 git checkout V1-error
 
-SLEEP_PERIOD=60
+SLEEP_PERIOD=190
 
 P_ID=$(nohup npm start >> worker.log 2>&1 & echo $!)
 
