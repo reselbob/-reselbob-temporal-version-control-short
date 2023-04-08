@@ -7,7 +7,7 @@ SLEEP_PERIOD=150
 
 RELEASE_MESSAGE="I will release a new version of the demonstration project every $SLEEP_PERIOD seconds"
 
-echo RELEASE_MESSAGE
+echo $RELEASE_MESSAGE
 
 echo "Running V1-error at $(date +"%Y-%m-%d %H:%M:%S")"
 
