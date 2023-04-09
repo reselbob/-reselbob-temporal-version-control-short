@@ -31,7 +31,7 @@ You can view the script named `autotexecwf.sh` [here](./autoexecutewf.sh). You c
 
 Run the following steps to run the bash script.
 
-1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git temporal-version-control`
+1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git`
 2. Execute `cd temporal-version-control`
 3. Execute `sh autoexecutewf.sh`
 
