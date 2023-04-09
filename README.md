@@ -27,7 +27,7 @@ The [**V4**](https://github.com/reselbob/temporal-version-control-01/tree/V4) ve
 
 This project ships with a bash script that will start a new version of the demonstration code at a set interval.
 
-You can view the script named `autotexecwf.sh` [here](./autoexecutewf.sh). You can alter the interval by which the version of code increments up and then starts by altering the value assigned to the variable `SLEEP_PERIOD`. The default value is `150` seconds.
+You can view the script named `autotexecwf.sh` [here](./autoexecutewf.sh). You can alter the interval by which the version of code increments up and then starts by altering the value assigned to the variable `SLEEP_PERIOD`. The default value is `360` seconds.
 
 Run the following steps to run the bash script.
 
