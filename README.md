@@ -4,6 +4,7 @@ A project that demonstrates how to execute version control on potentially long-r
 The project emulates a technical publishing workflow that consists of the following activities
 
 - `getArticle()` //returns a string that is an article title
+- `getEditor()` //returns a editor to assign to editing task for an article
 - `proofread(article:string)`
 - `techEdit(article:string)`
 - `copyEdit(article:string)`
