@@ -32,7 +32,7 @@ You can view the script named `autotexecwf.sh` [here](./autoexecutewf.sh). You c
 Run the following steps to run the bash script.
 
 1. Execute `git clone https://github.com/reselbob/temporal-version-control-01.git`
-2. Execute `cd temporal-version-control`
+2. Execute `cd temporal-version-control-01`
 3. Execute `sh autoexecutewf.sh`
 
 The script will execute all versions of the demonstration project. You'll see output similar to the following when you run the script:
