@@ -4,7 +4,7 @@ import {timings} from "./timings";
 
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
     //More info about startToCloseTimeout is here: https://docs.temporal.io/concepts/what-is-a-start-to-close-timeout/
-    startToCloseTimeout: '4 seconds',
+    startToCloseTimeout: '6m',
     retry: {
         backoffCoefficient: 1,
         maximumAttempts: 2,
