@@ -3,7 +3,7 @@ import type * as activities from './activities';
 import {timings} from "./timings";
 
 const {getArticle, getEditor, proofread, copyEdit, techEdit, formatEdit} = wf.proxyActivities<typeof activities>({
-    startToCloseTimeout: '4 seconds',
+    startToCloseTimeout: '6m',
     retry: {
         backoffCoefficient: 1,
         maximumAttempts: 2,
