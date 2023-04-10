@@ -3,7 +3,7 @@ npm install
 
 git checkout V1-error
 
-SLEEP_PERIOD=1800
+SLEEP_PERIOD=240
 
 RELEASE_MESSAGE="I will release a new version of the demonstration project every $SLEEP_PERIOD seconds"
 
@@ -24,9 +24,9 @@ echo "Waiting ... on V1\n\n"
 # V1
 sleep $SLEEP_PERIOD
 
-echo "Killing P_ID is $P_ID"
+echo "Killing P_ID $P_ID and subprocesses"
 
-kill $P_ID
+kill $(ps -s $$ -o pid=$P_ID)
 
 git checkout V1
 
@@ -45,9 +45,9 @@ echo "Waiting ... on V2\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing P_ID is $P_ID"
+echo "Killing P_ID $P_ID and subprocesses"
 
-kill $P_ID
+kill $(ps -s $$ -o pid=$P_ID)
 
 git checkout V2
 
@@ -67,9 +67,9 @@ echo "Waiting ... on V3\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing P_ID is $P_ID"
+echo "Killing P_ID $P_ID and subprocesses"
 
-kill $P_ID
+kill $(ps -s $$ -o pid=$P_ID)
 
 git checkout V3
 
@@ -89,9 +89,9 @@ echo "Waiting ... on V4\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing P_ID is $P_ID"
+echo "Killing P_ID $P_ID and subprocesses"
 
-kill $P_ID
+kill $(ps -s $$ -o pid=$P_ID)
 
 git checkout V4
 
