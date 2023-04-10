@@ -20,7 +20,7 @@ const {
     copyEdit_v4,
     formatEdit_v4,
 } = wf.proxyActivities<typeof activities>({
-    startToCloseTimeout: '4 seconds',
+    startToCloseTimeout: '6m',
     retry: {
         backoffCoefficient: 1,
         maximumAttempts: 2,
