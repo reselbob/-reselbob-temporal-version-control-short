@@ -24,7 +24,7 @@ echo "Waiting ... on V1\n\n"
 # V1
 sleep $SLEEP_PERIOD
 
-echo "Killing WORKER_ID $WORKER_ID and subprocesses"
+echo "Killing WORKER_ID $WORKER_ID"
 
 kill $WORKER_ID
 
@@ -45,7 +45,7 @@ echo "Waiting ... on V2\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing WORKER_ID $WORKER_ID and subprocesses"
+echo "Killing WORKER_ID $WORKER_ID"
 
 kill $WORKER_ID
 
@@ -67,7 +67,7 @@ echo "Waiting ... on V3\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing WORKER_ID $WORKER_ID and subprocesses"
+echo "Killing WORKER_ID $WORKER_ID"
 
 kill $WORKER_ID
 
@@ -89,7 +89,7 @@ echo "Waiting ... on V4\n\n"
 
 sleep $SLEEP_PERIOD
 
-echo "Killing WORKER_ID $WORKER_ID and subprocesses"
+echo "Killing WORKER_ID $WORKER_ID"
 
 kill $WORKER_ID
 
