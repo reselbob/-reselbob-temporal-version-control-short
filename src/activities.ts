@@ -12,18 +12,12 @@ export async function getArticle(): Promise<string>  {
 }
 
 export async function getEditor(): Promise<string>  {
+    const forbiddenNames: string[] = ["Elmer Fudd", "Fred Flintstone"];
     const data = fs.readFileSync(dataFileSpec,
         {encoding:'utf8', flag:'r'});
-    const editors = JSON.parse(data).editors;
-    let randomEntry = '';
-    while (randomEntry === '' || randomEntry.includes("Fred") || randomEntry.includes("Elmer")) {
-        const randomIndex = Math.floor(Math.random() * editors.length);
-        randomEntry = editors[randomIndex];
-        if (randomEntry != '' && !randomEntry.includes("Fred") && !randomEntry.includes("Elmer")) {
-            return randomEntry;
-        }
-    }
-    return 'Unknown';
+    const names = JSON.parse(data).editors;
+    const goodEditors: string[] = names.filter((name: string) => !forbiddenNames.includes(name));
+    return goodEditors[Math.floor(Math.random() * goodEditors.length)];
 }
 
 export async function proofread(editor: string, article:string): Promise<string> {
