@@ -46,7 +46,7 @@ export async function formatEdit(editor: string, article:string): Promise<string
 }
 
 export async function techEdit(editor: string, article:string): Promise<string> {
-    if(editor.includes("Fred") || editor.includes("Elmer")){
+    if(editor.includes("Fred Flintstone") || editor.includes("Elmer Fudd")){
         const errMsg = `${editor} is NO LONGER doing tech editing for us for article: ${article}`;
         throw new Error(errMsg);
     } ;
