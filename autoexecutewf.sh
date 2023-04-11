@@ -4,6 +4,7 @@ npm install
 git checkout V1-error
 
 SLEEP_PERIOD=3600
+SLEEP_BEFORE_WORKER_START=10
 
 RELEASE_MESSAGE="I will release a new version of the demonstration project every $SLEEP_PERIOD seconds"
 
@@ -12,6 +13,8 @@ echo $RELEASE_MESSAGE
 echo "Firing off V1-error at $(date +"%Y-%m-%d %H:%M:%S")"
 
 WORKER_ID=$(nohup ts-node src/worker.ts >> worker.log 2>&1 & echo $!)
+
+sleep $SLEEP_BEFORE_WORKER_START
 
 V1_ERR_ID=$(nohup ts-node src/client.ts > outputv1-error.log 2>&1 & echo $!)
 
@@ -34,6 +37,8 @@ echo "Firing off V1 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V1_ID=$(nohup ts-node src/client.ts > outputv1.log 2>&1 & echo $!)
 
+sleep $SLEEP_BEFORE_WORKER_START
+
 WORKER_ID=$(nohup ts-node src/worker.ts >> worker.log 2>&1 & echo $!)
 
 echo "WORKER_ID is $WORKER_ID"
@@ -54,6 +59,8 @@ git checkout V2
 echo "Firing off V2 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V2_ID=$(nohup ts-node src/client.ts > outputv2.log 2>&1 & echo $!)
+
+sleep $SLEEP_BEFORE_WORKER_START
 
 WORKER_ID=$(nohup ts-node src/worker.ts >> worker.log 2>&1 & echo $!)
 
@@ -77,6 +84,8 @@ echo "Firing off V3 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V3_ID=$(nohup ts-node src/client.ts > output-v3.log 2>&1 & echo $!)
 
+sleep $SLEEP_BEFORE_WORKER_START
+
 WORKER_ID=$(nohup ts-node src/worker.ts >> worker.log 2>&1 & echo $!)
 
 echo "WORKER_ID is $WORKER_ID"
@@ -98,6 +107,8 @@ git checkout V4
 echo "Firing off V4 at $(date +"%Y-%m-%d %H:%M:%S")"
 
 V4_ID=$(nohup ts-node src/client.ts > output-v4.log 2>&1 & echo $!)
+
+sleep $SLEEP_BEFORE_WORKER_START
 
 WORKER_ID=$(nohup ts-node src/worker.ts >> worker.log 2>&1 & echo $!)
 
