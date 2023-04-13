@@ -4,11 +4,11 @@ A project that demonstrates how to execute version control on potentially long-r
 The project emulates a technical publishing workflow that consists of the following activities
 
 - `getArticle()` //returns a string that is an article title
-- `techEdit(editor:string, article:string)`
-- `proofread(editor:string, article:string)`
-- `copyEdit(editor:string, article:string)`
-- `formatEdit(editor:string, article:string)`
-- `getBrandingApproval(article:string)`
+- `getEditor()` //returns a editor to assign to editing task for an article
+- `proofread(techEditeditor:string, article:string)`
+- `techEdit(techEditeditor:string, article:string)`
+- `copyEdit(techEditeditor:string, article:string)`
+- `formatEdit(techEditeditor:string, article:string)`
 
 The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
 
