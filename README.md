@@ -9,7 +9,6 @@ The project emulates a technical publishing workflow that consists of the follow
 - `proofread(editor:string, article:string)`
 - `copyEdit(editor:string, article:string)`
 - `formatEdit(editor:string, article:string)`
-- `getBrandingApproval(article:string)`
 
 The project gets a title of a random article from the file `./data/data.json` and processes it accordingly.
 
