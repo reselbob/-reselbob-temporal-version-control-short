@@ -5,10 +5,10 @@ The project emulates a technical publishing workflow that consists of the follow
 
 - `getArticle()` //returns a string that is an article title
 - `getEditor()` //returns a editor to assign to editing task for an article
-- `proofread(article:string)`
-- `techEdit(article:string)`
-- `copyEdit(article:string)`
-- `formatEdit(article:string)`
+- `proofread(techEditeditor:string, article:string)`
+- `techEdit(techEditeditor:string, article:string)`
+- `copyEdit(techEditeditor:string, article:string)`
+- `formatEdit(techEditeditor:string, article:string)`
 
 The project evolves the workflow scenarios over 5 versions as shown in the illustration below.
 
