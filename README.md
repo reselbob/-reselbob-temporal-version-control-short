@@ -9,7 +9,6 @@ The project emulates a technical publishing workflow that consists of the follow
 - `proofread(config : IConfig`
 - `copyEdit(config : IConfig)`
 - `formatEdit(config : IConfig)`
-- `getBrandingApproval(config : IConfig)`
 
 **WHERE** `IConfig` is:
 
