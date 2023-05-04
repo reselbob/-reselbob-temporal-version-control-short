@@ -23,12 +23,31 @@ The [**V3**](https://github.com/reselbob/temporal-version-control-01/tree/V3) ve
 The [**V4**](https://github.com/reselbob/temporal-version-control-01/tree/V4) version makes another significant change. It changes the signature of all the activity functions. Activity functions in prior versions of the workflow took two parameters: editor and article, The V4 version takes a new approach and passes a single parameter which is a configuration object. The configuration object has properties for the editor, article and also a new piece of information, the publisher. The name of the publisher is declared as a command line argument when the Temporal client starts the workflow. If no publisher is declared, a default value of Anonymous is assigned as the name of the publisher.
 
 
-# Automatically running the various version of the code
+# Automatically running the various versions of the code
 
 This project ships with a bash script that will start a new version of the demonstration code at a set interval.
 
-The bash script requires that **Node.js** and **ts-node** are installed globally on the host machine.
+The bash script requires that **Node.js** and **ts-node** are installed globally on the host machine. Also, for development purposes the Temportal CLI needs to be installed on the machine that will run the Temportal workflow.
 
+## Installing and running the Temporal developement server on a Linux machine
+
+`Step 1:` Run the following command in a terminal window to install the Temporal CLI:
+
+```
+curl -sSf https://temporal.download/cli.sh | sh
+```
+
+`Step 2:` Once the Temporal CLI is installed, execute the following command in the terminal window to start the Temporal development server:
+
+```
+temportal server start-dev --ip 0.0.0.0
+```
+
+The option `--ip 0.0.0.0` enables the Temportal Web UI to be accessed from a web browser runnning in an external machine. Thus to access the Temportal Web UI from a machine running at IP address 192.168.86.32, you'd enter the following in the browser's address bar: `http://192.168.86.32:8233`.
+
+[This page](https://docs.temporal.io/application-development/foundations#run-a-development-server) on the Temporal site provides the instructions for installing the Temporal development server on MacOS and Windows.
+
+## Getting the demonstration workflows up and running using the  `autotexecwf.sh` script
 
 You can view the script named `autotexecwf.sh` [here](./autoexecutewf.sh). You can alter the interval by which the version of code increments up and then starts by altering the value assigned to the variable `SLEEP_PERIOD`. The default value is `3600` seconds (1 hour).
 
@@ -89,7 +108,7 @@ All versions released
 
 ```
 
-# Viewing the Web UI
+## Viewing the Web UI
 
 You can viewe the Web UI for the project at: `http://<IP_ADDRESS>:8233`
 
