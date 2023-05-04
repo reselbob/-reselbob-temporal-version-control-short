@@ -40,7 +40,7 @@ curl -sSf https://temporal.download/cli.sh | sh
 `Step 2:` Once the Temporal CLI is installed, execute the following command in the terminal window to start the Temporal development server:
 
 ```
-temportal server start-dev --ip 0.0.0.0
+temporal server start-dev --ip 0.0.0.0
 ```
 
 The option `--ip 0.0.0.0` enables the Temportal Web UI to be accessed from a web browser runnning in an external machine. Thus to access the Temportal Web UI from a machine running at IP address 192.168.86.32, you'd enter the following in the browser's address bar: `http://192.168.86.32:8233`.
