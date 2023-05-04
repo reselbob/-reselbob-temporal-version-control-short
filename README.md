@@ -89,4 +89,10 @@ All versions released
 
 ```
 
+# Viewing the Web UI
+
+You can viewe the Web UI for the project at: `http://<IP_ADDRESS>:8233`
+
+![Screen Shot 2023-05-03 at 5 17 36 PM](https://user-images.githubusercontent.com/1110569/236078337-7d00560d-5865-43a6-b32c-361a2c6aa460.png)
+
 
