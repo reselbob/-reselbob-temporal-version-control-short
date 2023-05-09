@@ -32,6 +32,14 @@ export async function techPublishingWorkflow(): Promise<void> {
         await wf.sleep(timings.sleepPeriod01);
 
         pr = await proofread(await getEditor(), article);
+
+        te = await techEdit(await getEditor(), article);
+
+        await wf.sleep(timings.sleepPeriod02);
+
+        ce = await copyEdit(await getEditor(), article);
+    
+        fe = await formatEdit(await getEditor(), article);
     } else {
         v = 'Release_original';
         pr = await proofread(await getEditor(), article);
@@ -39,13 +47,13 @@ export async function techPublishingWorkflow(): Promise<void> {
         await wf.sleep(timings.sleepPeriod01);
 
         te = await techEdit(await getEditor(), article);
+
+        await wf.sleep(timings.sleepPeriod02);
+
+        ce = await copyEdit(await getEditor(), article);
+    
+        fe = await formatEdit(await getEditor(), article);
     }
-
-    await wf.sleep(timings.sleepPeriod02);
-
-    ce = await copyEdit(await getEditor(), article);
-
-    fe = await formatEdit(await getEditor(), article);
 
     const techPub = {
         startTime,
