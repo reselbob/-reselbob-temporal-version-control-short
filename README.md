@@ -1,7 +1,9 @@
 # The Temportal Version Control Demonstration Project
 A project that demonstrates how to execute version control on potentially long-running Temporal Workflows
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9mJlyGNOxOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![TIO-VersionControlDeck-b](https://github.com/reselbob/temporal-version-control-01/assets/1110569/9c3b4d33-4365-445a-8a0b-f5e18fb02fa1)](https://youtu.be/9mJlyGNOxOg)
+
+
 
 The project emulates a technical publishing workflow that consists of the following activities
 
