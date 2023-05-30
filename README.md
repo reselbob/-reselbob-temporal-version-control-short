@@ -1,7 +1,7 @@
 # The Temportal Version Control Demonstration Project
 A project that demonstrates how to execute version control on potentially long-running Temporal Workflows
 
-[![Video](./images/VideoBanner.jpg)](https://youtu.be/9mJlyGNOxOg)
+[![Video](./images/VideoBanner-01.jpg)](https://youtu.be/9mJlyGNOxOg)
 
 
 The project emulates a technical publishing workflow that consists of the following activities
